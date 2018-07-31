@@ -1,4 +1,4 @@
-Based on https://github.com/passport/express-4.x-facebook-example.
+Based on [express-4.x-facebook-example](https://github.com/passport/express-4.x-facebook-example), using [passport-github](https://github.com/jaredhanson/passport-github).
 
 This example demonstrates how to use [Express](http://expressjs.com/) 4.x and
 [Passport](http://passportjs.org/) to authenticate users using GitHub.  Use
