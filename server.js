@@ -91,4 +91,6 @@ app.get('/profile',
     res.render('profile', { user: req.user });
   });
 
-app.listen(port);
+app.listen(port, () => {
+  console.log(`listening on port ${port}`);
+});
