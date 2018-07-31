@@ -15,6 +15,8 @@ $ cd express-4.x-github-example
 $ npm install
 ```
 
+If you need session persistence with MongoDB, please switch to the [mongo branch](https://github.com/stefandesu/express-4.x-github-example/tree/mongo).
+
 The example uses environment variables to configure the consumer key and
 consumer secret needed to access GitHub's API. You can go [here](https://github.com/settings/applications/new) to create a new OAuth application for GitHub.  Start the server with those
 variables set to the appropriate credentials.
