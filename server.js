@@ -1,25 +1,25 @@
 var express = require('express');
 var passport = require('passport');
-var Strategy = require('passport-github').Strategy;
+var Strategy = require('passport-mediawiki-oauth').OAuthStrategy;
 require("dotenv").config();
 
 var port = process.env.PORT || 3000;
 
-// Configure the GitHub strategy for use by Passport.
+// Configure the Wikimedia/MediaWiki strategy for use by Passport.
 //
-// OAuth 2.0-based strategies require a `verify` function which receives the
-// credential (`accessToken`) for accessing the GitHub API on the user's
+// OAuth 1.0a-based strategies require a `verify` function which receives the
+// credential (`accessToken`) for accessing the Wikimedia/MediaWiki API on the user's
 // behalf, along with the user's profile.  The function must invoke `cb`
 // with a user object, which will be set at `req.user` in route handlers after
 // authentication.
 passport.use(new Strategy({
-    clientID: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: `http://localhost:${port}/login/github/return`
+    consumerKey: process.env.CONSUMER_KEY,
+    consumerSecret: process.env.CONSUMER_SECRET,
+    callbackURL: `http://localhost:${port}/login/wikimedia/return`
   },
   function(accessToken, refreshToken, profile, cb) {
-    // In this example, the user's GitHub profile is supplied as the user
-    // record.  In a production-quality application, the GitHub profile should
+    // In this example, the user's Wikimedia/MediaWiki profile is supplied as the user
+    // record.  In a production-quality application, the Wikimedia/MediaWiki profile should
     // be associated with a user record in the application's database, which
     // allows for account linking and authentication with other identity
     // providers.
@@ -34,7 +34,7 @@ passport.use(new Strategy({
 // production-quality application, this would typically be as simple as
 // supplying the user ID when serializing, and querying the user record by ID
 // from the database when deserializing.  However, due to the fact that this
-// example does not have a database, the complete GitHub profile is serialized
+// example does not have a database, the complete Wikimedia/MediaWiki profile is serialized
 // and deserialized.
 passport.serializeUser(function(user, cb) {
   cb(null, user);
@@ -76,11 +76,11 @@ app.get('/login',
     res.render('login');
   });
 
-app.get('/login/github',
-  passport.authenticate('github'));
+app.get('/login/wikimedia',
+  passport.authenticate('mediawiki'));
 
-app.get('/login/github/return',
-  passport.authenticate('github', { failureRedirect: '/login' }),
+app.get('/login/wikimedia/return',
+  passport.authenticate('mediawiki', { failureRedirect: '/login' }),
   function(req, res) {
     res.redirect('/');
   });
