@@ -18,12 +18,12 @@
     "url": "https://github.com/stefandesu/express-4.x-wikimedia-example/issues"
   },
   "dependencies": {
-    "body-parser": "^1.13.2",
+    "body-parser": "^1.20.1",
     "connect-ensure-login": "^0.1.1",
     "cookie-parser": "^1.4.4",
     "dotenv": "^6.2.0",
     "ejs": "^2.3.3",
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "express-session": "^1.11.3",
     "morgan": "^1.9.1",
     "passport": "^0.2.2",
